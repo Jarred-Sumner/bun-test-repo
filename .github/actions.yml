@@ -1,0 +1,28 @@
+name: Run tests
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  run-tests:
+    name: Check links
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'oven-sh'
+    strategy:
+      fail-fast: false
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: canary
+
+      - name: Run tests
+        run: bun test
