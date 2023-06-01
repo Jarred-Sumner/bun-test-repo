@@ -9,9 +9,8 @@ on:
 
 jobs:
   run-tests:
-    name: Check links
+    name: Run tests
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'oven-sh'
     strategy:
       fail-fast: false
 
